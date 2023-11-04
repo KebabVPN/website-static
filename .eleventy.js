@@ -48,6 +48,9 @@ module.exports = function(eleventyConfig) {
     var result = await minify(code, { sourceMap: true });
     return result.code;
   });
+  eleventyConfig.addFilter("js_path", async function(script_path) {
+    return `/assets/js/${script_path}?${Date.now()}`;
+  });
   eleventyConfig.addWatchTarget("./src/assets");
   return {
     dir: {
