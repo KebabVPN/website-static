@@ -9,7 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "bootstrap": "^5.3",
+    "sass": "^1.69.5",
+    "terser": "^5.24.0"
   }
 }

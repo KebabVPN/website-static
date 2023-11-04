@@ -1,0 +1,7 @@
+---
+permalink: assets/js/bundle.js
+---
+{% capture js %}
+  {% include "assets/js/_application.js" %}
+{% endcapture %}
+{{ js | jsmin }}
