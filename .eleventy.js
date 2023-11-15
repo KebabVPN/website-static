@@ -1,6 +1,9 @@
 const { EleventyI18nPlugin } = require("@11ty/eleventy");
+const { RetrieveGlobals } = require("node-retrieve-globals");
 const { minify } = require("terser");
 const sass = require('sass');
+const toml = require('toml');
+const coffee = require('coffeescript');
 
 const inputDir = "src";
 const outputDir = "build";
@@ -52,12 +55,40 @@ module.exports = function(eleventyConfig) {
     return `/assets/js/${script_path}?${Date.now()}`;
   });
   eleventyConfig.addWatchTarget("./src/assets");
+  eleventyConfig.setNunjucksEnvironmentOptions({
+    throwOnUndefined: true,
+    autoescape: false, // warning: don’t do this!
+  });
+  eleventyConfig.setFrontMatterParsingOptions({
+    engines: {
+      toml: toml.parse.bind(toml),
+      coffee: {
+        parse: function(str, options) {
+          /* eslint no-eval: 0 */
+          return coffee['eval'](str, options);
+        }
+      },
+      javascript: function(frontMatterCode) {
+        let vm = new RetrieveGlobals(frontMatterCode);
+
+        let data = {}; // want to pass in data available in front matter?
+        return vm.getGlobalContext(data, {
+          reuseGlobal: true,
+          dynamicImport: true,
+        });
+      }
+    }
+  });
+  eleventyConfig.addNunjucksShortcode("this", function() {
+    return this;
+  });
   return {
     dir: {
       input: inputDir,
       output: outputDir,
       includes: includesDir,
       layouts: layoutsDir
-    }
+    },
+    htmlTemplateEngine: "njk"
   }
 };

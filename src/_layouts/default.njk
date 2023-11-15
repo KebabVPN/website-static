@@ -1,0 +1,50 @@
+---coffee
+data:
+  layout:
+    title: 'KebabVPN'
+    description: 'Secure VPN gateway for personal use and work!'
+    theme:
+      dark: false
+      color: '#5d2f86'
+    alert:
+      show: false
+      dismissable: true
+      text: 'Hello'
+    menus: header:
+      name: 'header'
+      items: [
+        {
+          name: '/pricing/'
+          items: false
+        }
+        {
+          name: '/terms/'
+          items: false
+        }
+        {
+          name: '/documentation/'
+          items: [ { name: 'ios/' } ]
+        }
+      ]
+eleventyComputed:
+  title: (ctx) ->
+    data = ctx.data
+    title = data.page.title + ' | ' + data.layout.title
+    if ctx.layout == 'index'
+      title = data.layout.title + ' - ' + data.page.title
+    title
+  description: (ctx) ->
+    ctx.data.page.description or ctx.data.layout.description
+---
+
+<!doctype html>
+<html lang="{{ page.lang }}">
+  <head>
+    {% include 'head/head.njk' %}
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>{{ data | dump }}</p>
+    <p>{{ content }}</p>
+  </body>
+</html>

@@ -12,7 +12,10 @@
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
     "bootstrap": "^5.3",
+    "coffeescript": "^2.7.0",
+    "node-retrieve-globals": "^2.0.4",
     "sass": "^1.69.5",
-    "terser": "^5.24.0"
+    "terser": "^5.24.0",
+    "toml": "^3.0.0"
   }
 }
