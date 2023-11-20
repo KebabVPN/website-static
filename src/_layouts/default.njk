@@ -6,10 +6,7 @@ data:
     theme:
       dark: false
       color: '#5d2f86'
-    alert:
-      show: false
-      dismissable: true
-      text: 'Hello'
+      body_class: ''
     menus: header:
       name: 'header'
       items: [
@@ -23,28 +20,37 @@ data:
         }
         {
           name: '/documentation/'
-          items: [ { name: 'ios/' } ]
+          items: [
+            {
+              name: 'ios/'
+            }
+          ]
         }
       ]
+  alert:
+    show: true
+    dismissable: true
+    text: 'Hello, world!'
+
 eleventyComputed:
+
   title: (ctx) ->
-    data = ctx.data
-    title = data.page.title + ' | ' + data.layout.title
+    title = ctx.data.page.title + ' | ' + ctx.data.layout.title
     if ctx.layout == 'index'
-      title = data.layout.title + ' - ' + data.page.title
+      title = ctx.data.layout.title + ' - ' + ctx.data.page.title
     title
+
   description: (ctx) ->
     ctx.data.page.description or ctx.data.layout.description
----
 
+---
 <!doctype html>
 <html lang="{{ page.lang }}">
   <head>
     {% include 'head/head.njk' %}
   </head>
-  <body>
-    <h1>{{ title }}</h1>
-    <p>{{ data | dump }}</p>
-    <p>{{ content }}</p>
+  <body class="{{ data.layout.theme.body_class }}">
+    {% include 'header/header.njk' %}
+    {{ content }}
   </body>
 </html>

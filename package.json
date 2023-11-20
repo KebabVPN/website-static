@@ -13,6 +13,8 @@
     "@11ty/eleventy": "^2.0.1",
     "bootstrap": "^5.3",
     "coffeescript": "^2.7.0",
+    "escape-string-regexp": "^5.0.0",
+    "favicons": "^7.1.4",
     "node-retrieve-globals": "^2.0.4",
     "sass": "^1.69.5",
     "terser": "^5.24.0",

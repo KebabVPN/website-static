@@ -1,1 +1,22 @@
+<title>{{ title }}</title>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="{{ description }}">
+<meta name="theme-color" content="{{ data.layout.theme.color }}">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<link rel="preload" as="font" href="{{ 'jost/jost-v4-latin-regular.woff2' | font_path }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ 'jost/jost-v4-latin-500.woff2' | font_path }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ 'jost/jost-v4-latin-700.woff2' | font_path }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ 'katex/KaTeX_Main-Regular.woff2' | font_path }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ 'katex/KaTeX_Math-Italic.woff2' | font_path }}" type="font/woff2" crossorigin>
+
+{{ {} | favicon_tags }}
+
+<link rel="stylesheet" href="{{ 'bundle.css' | css_path }}" crossorigin>
+
 <script src="{{ 'bundle.js' | js_path }}">
