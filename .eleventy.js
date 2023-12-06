@@ -51,7 +51,7 @@ var faviconTags = '';
 //
 // {dir}_path Filter Setup
 //
-const path_filter_dirs = [ 'js', 'css', 'font' ];
+const path_filter_dirs = [ 'js', 'css', 'fonts' ];
 
 
 module.exports = function(eleventyConfig) {

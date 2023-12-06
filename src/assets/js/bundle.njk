@@ -2,6 +2,7 @@
 permalink: assets/js/bundle.js
 ---
 {% set js %}
+  {% include "node_modules/jquery/dist/jquery.js" %}
   {% include "node_modules/bootstrap/dist/js/bootstrap.js" %}
   {% include "src/assets/js/_application.js" %}
 {% endset %}
